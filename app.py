@@ -6,10 +6,11 @@ from ml import run_ml
 
 
 def main():
-    st.title('수면 건강')
+    st.title('현대인의 수면 건강')
 
     menu = ['HOME','생활과 수면','수면 건강 확인하기']
     choice = st.sidebar.selectbox('메뉴', menu)
+   
     if choice == menu[0] :
         run_home()
     elif choice == menu[1] :
