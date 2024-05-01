@@ -21,7 +21,7 @@ def run_eda() :
 
     if choice_radio == radio_menu[0]:
         st.dataframe(df.head())
-        st.text('374개의 데이터 중 5개만 보입니다.')
+        st.write('374개의 데이터 중 5개만 보입니다.')
     elif choice_radio == radio_menu[1]:
         st.dataframe(df.describe())
 
@@ -35,8 +35,9 @@ def run_eda() :
 
     with col2:
         # 파이 차트 그리기
-        st.text('수면 장애의 종류는 80여 가지 이상으로 매우 다양하다.')
-        st.text('비율을 구하기 위해서 대표적인 예인 불면증과 무호흡증으로 알아보았다.')
+        st.write("""> 수면 장애의 대표적인 두가지인, 
+                 불면증과 무호흡증의 비율을 
+                 파이 차트를 통해 확인 할 수 있습니다.""")
         
         df2 = df['수면 장애'].value_counts()
         import platform
@@ -69,7 +70,7 @@ def run_eda() :
 
     # 선택하여 그래프 볼 수 있게 하기
     st.write('##### 수면 상태와 생활의 관계')
-    st.text('일상생활과 건강의 데이터와 수면 장애의 관련성을 눈으로 확인할 수 있습니다.')
+    st.write('일상생활과 건강의 데이터와 수면 장애의 관련성을 눈으로 확인할 수 있습니다.')
     column_list = ['성별',
                     '나이',
                     '수면 시간',
