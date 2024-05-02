@@ -3,6 +3,7 @@ import joblib
 import numpy as np
 import pandas as pd
 
+
 def run_ml() :
     st.subheader('일상생활에 따른 수면 상태 예측')
 
@@ -142,20 +143,12 @@ def run_ml() :
         data_pred = data_pred[0]
 
         if data_pred == 0 :
-            st.write('###### 예상 수면 상태는 무호흡증 입니다. 수면 상태를 확인하고 신경 써 주세요.')
+            st.write('###### 예상 수면 상태는 무호흡증 입니다. 나의 수면 상태를 확인하고 신경 써 주세요.')
         elif data_pred == 1 :
-            st.write('###### 예상 수면 상태는 불면증 입니다. 수면 상태를 확인하고 신경 써 주세요.')
+            st.write('###### 예상 수면 상태는 불면증 입니다. 나의 수면 상태를 확인하고 신경 써 주세요.')
         elif data_pred == 2 :
-            st.write('###### 예상 수면 상태는 정상 입니다. 좋은 수면을 하고 계신가요?')
+            st.write('###### 예상 수면 상태는 정상 입니다. 좋은 수면 상태를 가지고 계시나요?')
    
-
-
-
-        # 예측하기
-
-    
-
-
 
 
 
