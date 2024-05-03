@@ -3,6 +3,10 @@ from PIL import Image
 
 def run_home() :
     st.subheader('현대인의 수면상태를 분석하고 나의 수면 상태를 예측합니다.')
+
+    st.write(' ')
+
+    st.link_button('데이터 출처', url='https://www.kaggle.com/datasets/uom190346a/sleep-health-and-lifestyle-dataset')
     st.write("""데이터는 캐글에 있는 
              Sleep_health_and_lifestyle_dataset.csv 파일을 사용했습니다.""")
 
