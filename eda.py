@@ -1,8 +1,16 @@
 import streamlit as st
 import pandas as pd
-import matplotlib.pyplot as plt
+
 from sklearn.preprocessing import LabelEncoder
+
 from PIL import Image
+
+import platform
+import matplotlib.pyplot as plt
+from matplotlib import font_manager, rc
+plt.rcParams['axes.unicode_minus'] = False
+if platform.system() == 'Linux':
+    rc('font', family='NanumGothic')
 
 
 def run_eda() :
@@ -40,19 +48,6 @@ def run_eda() :
                  파이 차트를 통해 확인 할 수 있습니다.""")
         
         df2 = df['수면 장애'].value_counts()
-        import platform
-
-        from matplotlib import font_manager, rc
-        plt.rcParams['axes.unicode_minus'] = False
-
-        if platform.system() == 'Darwin':
-            rc('font', family='AppleGothic')
-        elif platform.system() == 'Windows':
-            path = "c:/Windows/Fonts/malgun.ttf"
-            font_name = font_manager.FontProperties(fname=path).get_name()
-            rc('font', family=font_name)
-        else:
-            print('Unknown system... sorry~~~~')
 
         fig1 = plt.figure()
         plt.pie(df2, labels= df2.index, autopct= '%.1f%%', startangle=90, wedgeprops={'width':0.7}) 
