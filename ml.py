@@ -159,13 +159,19 @@ def run_ml() :
         print(data_pred)
 
         # 리스트에서 꺼내고 한글로 변환하기
-        data_pred = data_pred[0]
+        img1 = Image.open('./image/무호흡증.jpg')
+        img2 = Image.open('./image/불면증.png')
+        img3 = Image.open('./image/정상.png')
 
+        data_pred = data_pred[0]
         if data_pred == 0 :
+            st.image(img1, use_column_width=True)
             st.write('###### 예상 수면 상태는 무호흡증 입니다. 나의 수면 상태를 확인하고 신경 써 주세요.')
         elif data_pred == 1 :
+            st.image(img2, use_column_width=True)
             st.write('###### 예상 수면 상태는 불면증 입니다. 나의 수면 상태를 확인하고 신경 써 주세요.')
         elif data_pred == 2 :
+            st.image(img3, use_column_width=True)
             st.write('###### 예상 수면 상태는 정상 입니다. 좋은 수면 상태를 가지고 계시나요?')
    
 
