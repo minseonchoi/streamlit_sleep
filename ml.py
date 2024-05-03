@@ -2,6 +2,7 @@ import streamlit as st
 import joblib
 import numpy as np
 import pandas as pd
+from PIL import Image
 
 
 def run_ml() :
@@ -68,11 +69,29 @@ def run_ml() :
     st.write('  ')
 
     # BMI 범주
-    st.write('- 체중의 정도를 선택해주세요.')
-    BMI = ['정상','과체중','비만','저체중']
-    sel_bmi = st.selectbox('BMI 범주로 나눈 체중의 정도', BMI )
-    st.info('BMI 정보는 ' + str(sel_bmi)+' 입니다.')
-    print(sel_bmi)
+    st.write('- 체중과 키를 적어 BMI 를 구합니다.')
+    wegit = st.text_input('체중을 입력하세요(kg)', value=1.0)
+    tall = st.text_input('키를 입력하세요(cm)', value=1.0)
+    wegit = float(wegit)
+    tall = float(tall)
+    tall = tall/100
+    bmi_sum = round( wegit / ( tall ** 2 ), 2 )
+    bmi = ''
+    if  bmi_sum >= 25.00 :
+        bmi = '비만'
+    elif bmi_sum >= 23.00 :
+        bmi = '과체중'
+    elif bmi_sum >= 18.50 :
+        bmi = '정상'
+    else :
+        bmi = '저체중'
+    
+    st.write('> 체질량 지수 표 ')
+    img = Image.open('./image/bmi.png')
+    st.image(img, use_column_width=True)
+
+    st.info('BMI 계산 결과는 ' + str(bmi_sum) + ' 로 ' + str(bmi) + ' 입니다.')
+    print(bmi)
 
     st.write('  ')
 
@@ -127,7 +146,7 @@ def run_ml() :
                                   '수면의 질(등급:1-10)':[num_sleep],
                                   '신체 활동수준(분/일)':[activity],
                                   '스트레스 수준': [stress],
-                                  'BMI 범주':[sel_bmi],
+                                  'BMI 범주':[bmi],
                                   '심박수(BPM)':[bpm],
                                   '일일 걸음 수':[steps],
                                   '혈압(수축기)':[systolic],
