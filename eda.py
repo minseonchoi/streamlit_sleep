@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import numpy as np
 
 from sklearn.preprocessing import LabelEncoder
 
@@ -65,7 +66,10 @@ def run_eda() :
 
     # 선택하여 그래프 볼 수 있게 하기
     st.write('##### 수면 상태와 생활의 관계')
-    st.write('일상생활과 건강의 데이터와 수면 장애의 관련성을 눈으로 확인할 수 있습니다.')
+    st.write('박스플롯 차트(캔들 차트)로 일상생활의 건강 데이터와 수면 장애의 관련성을 눈으로 확인 할 수 있습니다.')
+    st.write('''> 박스플롯 차트 보는 법 : 사분 범위(네모난 상자)를 중점으로 확인하며,
+            사분범위는 중앙값(Median)을 기준으로 데이터들의 흩어진 정도 입니다.
+            박스플롯 차트는 분포되는 데이터에서 이상치를 찾는데 효과적입니다.''')
     column_list = ['성별',
                     '나이',
                     '수면 시간',
@@ -83,17 +87,38 @@ def run_eda() :
     df['수면 장애'] = encoder.fit_transform(df['수면 장애'])
     
     # 표 그리기
+    st.write('')
+    st.write('')
+
     choice_column = st.selectbox('보고싶은 열을 선택하세요. 숫자 데이터만 확인 가능합니다.', column_list)
-    
+        
     print(choice_column)
-    
-    fig2 = plt.figure()
-    plt.hist2d(data=df, x='수면 장애', y= str(choice_column), cmin= 0.5, cmap = 'viridis_r', bins= 20)
-    plt.xticks([0, 1, 2])
-    plt.colorbar()
-    plt.title(f'수면 상태와 {str(choice_column)} 의 관계')
-    plt.xlabel('0 = 무호흡,   1 = 불면증,   2 = 정상')
-    plt.ylabel(f'{str(choice_column)}')
+
+    df_0 = df.loc[df['수면 장애'] == 0, ]
+    df_1 = df.loc[df['수면 장애'] == 1, ]
+    df_2 = df.loc[df['수면 장애'] == 2, ]
+
+    fig2 = plt.figure(figsize=(12,8))
+
+    plt.subplot(1, 3, 1) #(행, 열 , 순서 번째)
+    bplot1 = plt.boxplot(df_0[choice_column], notch=True, patch_artist=True)
+    plt.xticks(np.arange(1, 2), ['무호흡'])
+    plt.ylabel(choice_column)
+
+    plt.subplot(1, 3, 2)
+    bplot2 = plt.boxplot(df_1[choice_column], notch=True, patch_artist=True)
+    plt.xticks(np.arange(1, 2), ['불면증'])
+    plt.ylabel(choice_column)
+
+    plt.subplot(1, 3, 3) #(행, 열 , 순서 번째)
+    bplot3 = plt.boxplot(df_2[choice_column], notch=True, patch_artist=True)
+    plt.xticks(np.arange(1, 2), ['정상'])
+    plt.ylabel(choice_column)
+
+    colors = ['lightblue']
+    for bplot in (bplot1, bplot2, bplot3):
+        for patch, color in zip(bplot['boxes'], colors):
+            patch.set_facecolor(color)
     st.pyplot(fig2)
         
 
