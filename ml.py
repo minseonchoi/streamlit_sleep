@@ -172,7 +172,7 @@ def run_ml() :
             st.write('###### 예상 수면 상태는 불면증 입니다. 나의 수면 상태를 확인하고 신경 써 주세요.')
         elif data_pred == 2 :
             st.image(img3, use_column_width=True)
-            st.write('###### 예상 수면 상태는 정상 입니다. 좋은 수면 상태를 가지고 계시나요?')
+            st.write('###### 예상 수면 상태는 정상 입니다. 나의 수면 상태를 확인해 보세요.')
    
 
 
