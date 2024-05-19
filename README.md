@@ -7,7 +7,7 @@
 #### 성별, 나이, 수면시간, 수면의 질, 신체 활동 수준, 스트레스 수준, BMI 범주, 혈압, 심박수, 일일 걸음 수가 수면에 미치는 영향을 보여주는 앱입니다.
 
 
-[수면장애 발생 여부 예측 앱 URL](http://ec2-43-200-173-72.ap-northeast-2.compute.amazonaws.com:8501/)
+[수면장애 발생 여부 예측 앱 URL : http://ec2-54-180-99-198.ap-northeast-2.compute.amazonaws.com:8501/](http://ec2-54-180-99-198.ap-northeast-2.compute.amazonaws.com:8501/)
 
 
 
