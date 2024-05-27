@@ -11,6 +11,7 @@ import matplotlib.pyplot as plt
 from matplotlib import font_manager, rc
 plt.rcParams['axes.unicode_minus'] = False
 if platform.system() == 'Linux':
+    plt.rcParams["font.family"] = 'NanumGothic'
     rc('font', family='NanumGothic')
 
 
