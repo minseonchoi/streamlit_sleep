@@ -10,13 +10,6 @@ import platform
 import matplotlib.pyplot as plt
 from matplotlib import font_manager, rc
 
-if platform.system() == 'Linux':
-    font_path = '/usr/share/fonts/nanum/NanumGothic.ttf'
-    font_name = font_manager.FontProperties(fname=font_path).get_name()
-    rc('font', family='NanumGothic')
-plt.rcParams['axes.unicode_minus'] = False
-
-
 
 plt.rcParams['axes.unicode_minus'] = False
 if platform.system() == 'Linux':
