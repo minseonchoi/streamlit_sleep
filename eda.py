@@ -16,7 +16,7 @@ import shutil
 plt.rcParams['axes.unicode_minus'] = False
 
 # 나눔 폰트 경로 설정
-font_path = '/home/ec2-user/anaconda3/envs/st_310/lib/python3.10/site-packages/matplotlib/mpl-data/fonts/ttf/NanumGothic.ttf'
+font_path = '/usr/share/fonts/nanum/NanumGothic.ttf'
 font_prop = font_manager.FontProperties(fname=font_path)
 
 # 폰트를 matplotlib에 등록
