@@ -9,11 +9,24 @@ from PIL import Image
 import platform
 import matplotlib.pyplot as plt
 from matplotlib import font_manager, rc
+import os
+import shutil
 
 
 plt.rcParams['axes.unicode_minus'] = False
-if platform.system() == 'Linux':
-    rc('font', family='NanumGothic')
+
+# 나눔 폰트 경로 설정
+font_path = '/home/ec2-user/anaconda3/envs/st_310/lib/python3.10/site-packages/matplotlib/mpl-data/fonts/ttf/NanumGothic.ttf'
+font_prop = font_manager.FontProperties(fname=font_path)
+
+# 폰트를 matplotlib에 등록
+font_manager.fontManager.addfont(font_path)
+rc('font', family=font_prop.get_name())
+
+# Matplotlib 캐시 삭제
+cache_dir = os.path.expanduser('~/.cache/matplotlib')
+if os.path.exists(cache_dir):
+    shutil.rmtree(cache_dir)
 
 
 def run_eda() :
